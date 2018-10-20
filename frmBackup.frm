@@ -160,7 +160,7 @@ End Sub
 
 Private Sub Form_Activate()
 frmMain.timMain.Interval = 0
-If frmMain.imgButton(6).Picture <> frmMain.imgButtonD(6).Picture Then
+If frmMain.recBorder(6).FillStyle = 1 Then
     Me.Caption = "Restore TextMe Database"
     lblDescription.Caption = "Restore From"
     lblWarning.Caption = "WARNING: Notes In The TextMe Database Will Be Replaced"
