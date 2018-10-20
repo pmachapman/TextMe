@@ -542,7 +542,7 @@ If filMain.Height < 19 Then filMain.Height = 19
 If filMain.Height > 18 Then
     If Me.ScaleHeight - filMain.Height > 36 Then
         If txtMain.Height + Toolbar.Height <> ScaleHeight Then filMain.Height = ScaleHeight - Toolbar.Height + 2  'The +1 is to make up for the moving of filMain up one to make it level with txtMain
-    ElseIf Me.ScaleHeight - filMain.Height - Toolbar.Height < 0 Then
+    ElseIf ScaleHeight - filMain.Height - Toolbar.Height < 0 Then
         If ScaleHeight - Toolbar.Height + 2 > 0 Then
             filMain.Height = ScaleHeight - Toolbar.Height + 2
         Else
@@ -1319,6 +1319,7 @@ NoSaveCode:
     End If
 End If
 End Sub
+
 Public Sub GetRegistrySettings()
 Dim iWindowState As Integer
 Dim Msg As Integer

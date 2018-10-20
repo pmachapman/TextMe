@@ -64,3 +64,7 @@ End Sub
 Private Sub Form_Unload(Cancel As Integer)
 If Trim$(UCase$(Command$)) = ":UPDATE" Then End
 End Sub
+
+Private Sub wbUpdate_StatusTextChange(ByVal Text As String)
+
+End Sub
