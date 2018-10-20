@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{EAB22AC0-30C1-11CF-A7EB-0000C05BAE0B}#1.1#0"; "shdocvw.dll"
+Object = "{EAB22AC0-30C1-11CF-A7EB-0000C05BAE0B}#1.1#0"; "ieframe.dll"
 Begin VB.Form frmUpdate 
    Caption         =   "Updating...You Must Be Connected To The Internet"
    ClientHeight    =   3255
@@ -44,27 +44,26 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+Option Explicit
+
 Private Sub Form_Load()
-wbUpdate.Navigate2 "http://www15.brinkster.com/pmchapman/update.asp?v=" + CStr(App.Major) + "." + CStr(App.Minor) + "." + CStr(App.Revision)
-Form_Resize
-Dim Msg As Long
-Msg = MsgBox("Please Connect To The Internet Before Continuing." + vbCrLf + vbCrLf + "NOTE: No Personal Information Is Sent, Only The Version Number.", vbInformation + vbApplicationModal + vbOKCancel, "TextMe Web Update")
-If Msg = vbCancel Then
-Unload Me
-Exit Sub
-End If
-wbUpdate.Navigate2 "http://www15.brinkster.com/pmchapman/update.asp?v=" + CStr(App.Major) + "." + CStr(App.Minor) + "." + CStr(App.Revision)
+    wbUpdate.Navigate2 "https://textme.conglomo.co.nz/update.php?v=" + CStr(App.Major) + "." + CStr(App.Minor) + "." + CStr(App.Revision)
+    Form_Resize
+    Dim Msg As Long
+    Msg = MsgBox("Please Connect To The Internet Before Continuing." + vbCrLf + vbCrLf + "NOTE: No Personal Information Is Sent, Only The Version Number.", vbInformation + vbApplicationModal + vbOKCancel, "TextMe Web Update")
+    If Msg = vbCancel Then
+        Unload Me
+        Exit Sub
+    End If
+    wbUpdate.Navigate2 "https://textme.conglomo.co.nz/update.php?v=" + CStr(App.Major) + "." + CStr(App.Minor) + "." + CStr(App.Revision)
 End Sub
 
 Private Sub Form_Resize()
-wbUpdate.Height = ScaleHeight
-wbUpdate.Width = ScaleWidth
+    wbUpdate.Height = ScaleHeight
+    wbUpdate.Width = ScaleWidth
 End Sub
 
 Private Sub Form_Unload(Cancel As Integer)
-If Trim$(UCase$(Command$)) = ":UPDATE" Then End
+    If Trim$(UCase$(Command$)) = ":UPDATE" Then End
 End Sub
 
-Private Sub wbUpdate_StatusTextChange(ByVal Text As String)
-
-End Sub

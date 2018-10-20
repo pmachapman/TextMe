@@ -1,5 +1,5 @@
 Type=Exe
-Object={EAB22AC0-30C1-11CF-A7EB-0000C05BAE0B}#1.1#0; shdocvw.dll
+Object={EAB22AC0-30C1-11CF-A7EB-0000C05BAE0B}#1.1#0; ieframe.dll
 Form=frmAbout.frm
 Form=frmUpdate.frm
 Module=modMain; modMain.bas
