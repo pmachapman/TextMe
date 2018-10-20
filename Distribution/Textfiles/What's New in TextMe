@@ -1,4 +1,30 @@
-What's New In Version 1.5...
+What's New In Version 1.6 Beta (1.5.9999)...
+- New: Drag Multiple Files Into TextMe
+- New: Can Change Text Font And Colour
+- New: Can Insert The Current Date And Time
+- New: Can Reset Settings To Program Defaults
+- Empty Note On Start Bug Fixed
+- Options Dialog Select Bug Fixed
+- Options Dialog Tab Bug Fixed
+- Reset Registry Bug Fixed
+- Note List Alignment Bug Fixed
+- Resize Code Fine Tuned
+- Web Update 404 Error Message fixed
+
+Version 1.5.22
+22 Bug Fixes Including...
+- Flicker Bugs Fixed
+- Toolbar Redraw Bugs Fixed
+- TextMe Program Size Reduced
+- Graphical Tweaks
+- Drive Selection Enabled In Backup/Restore
+- Backup/Restore Folder Change Bug Fixed
+- Easter Egg Bug Fixed
+- About Error Message Fixed
+- Web Update Added To About
+- Improved ToolTips
+
+Version 1.5
 - New: Toolbar
 - New: Settings Dialog Box
 - New: Resizable Window

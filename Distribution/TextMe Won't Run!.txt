@@ -1,0 +1,12 @@
+TextMe Won't Run!
+
+One of the most common cause of TextMe failing to run is due to the Microsoft Visual Basic 6.0 Runtimes not being installed on your computer. These files are already installed on windows 2000, Me and XP or higher.
+
+You can download them from;
+http://www15.brinkster.com/pmchapman/files/vbrun60sp5.zip
+
+Please look at the following webpage for further help:
+http://pcos.cjb.net/supporttextme4.html
+
+Or contact me for further help:
+dukespukem@hotmail.com
