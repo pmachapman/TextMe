@@ -1,0 +1,8 @@
+The Following Command Line Arguments Can Be Used With TextMe:
+
+:UPDATE - Loads Only The Web Updater, Then Closes TextMe
+:ABOUT - Loads Only The About Dialog Box, Then Closes TextMe
+
+You can also use the name and path of a file (e.g C:\MyFile.txt) to import it into the TextMe Note Database.
+
+You cannot use any command line arguments together.

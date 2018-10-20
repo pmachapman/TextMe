@@ -1,0 +1,12 @@
+#################
+## Microsoft Visual Basic
+#################
+
+*.log
+*.vbw
+
+#################
+## TextMe Specific
+#################
+
+/TextFiles

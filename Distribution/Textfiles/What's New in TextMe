@@ -1,0 +1,68 @@
+What's New In Version 1.5...
+- New: Toolbar
+- New: Settings Dialog Box
+- New: Resizable Window
+- New: Salamander Error Reporting Extension Support
+- New: Pressing Delete In The Note List Deletes The Selected Note
+- New: Window Settings Saved
+- Invalid Drag Bug Fixed
+- TextFiles Directory Missing Bug Fixed
+- Web Update Improved
+- Drag Code Improved
+- Backup/Restore Improved
+- Delete All Improved
+- Empty Database Bugs Fixed
+- Cannot Run TextMe Without A Mouse
+- Invalid Registry Settings Patch Built-In
+- Renamed Back to TextMe Notes Organiser
+
+Version 1.4.1
+- Web Update Pop-Up Advertisements Removed
+
+Version 1.4
+- New: Backup and Restore Notes To A Folder Outside of TextMe
+- New: Delete All Notes Feature Added
+- TextMe Refreshes The Note List Only When Needed
+- Scroll Refresh Bug Fixed
+- Externally Modified First Note Bug Fixed
+- Tab Order Fixed
+- Select Then Reopen Note Bug Fixed
+- About And Update Dialogs Keep Focus
+- Some ToolTips Modified
+- Web Update Asks For You To Connect To The Internet Before Updating
+
+Version 1.3.7
+- Fixes The Web Update Resize Bug
+- Allows Web Update After Installation Of TextMe
+- Fixes Web Update Download Bug
+
+Version 1.3.4
+- Activates The "Database Can Be Modified Outside of TextMe And TextMe Automatically Updates The Database List" Feature
+- Fixes The Web Update Version Bug
+- Fixes The Random Save Bug
+- Fixes The Update ToolTip Bug
+
+Version 1.3
+- Corrupted Files Are Not Imported Into Notes
+- Corrupted Notes Can Be Deleted
+- Database Can Be Modified Outside of TextMe And TextMe Automatically Updates The Database List
+- Text Drag Bug Fixed
+- Drag and Drop Onto Anywhere In TextMe
+- Checkbox Display Bug Fixed
+- Keyboard Shortcuts Added To Checkboxes
+- Can Have Up To 2,147,483,647 Entries In The Database (Limited by Free Space And Operating System File System)
+- ToolTips For All Buttons
+- Handling Of Deleted Notes Improved
+- Settings Multiple Program Bug Fixed
+
+Version 1.2
+- New: Web Update
+- Install Program Modified
+- Widths Modified
+
+Version 1.1
+- New: Read Only Option Added
+- Renamed to TextMe Notes Organiser - Standard Edition
+
+Version 1.0.1
+- Copy Bug Fixed
