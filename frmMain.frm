@@ -439,7 +439,7 @@ On Error GoTo Err
         
         If (lResult = -1) Then GoTo Err
         
-        filMain.ToolTipText = Left(sText, lResult)
+        filMain.ToolTipText = Left$(sText, lResult)
     Exit Sub
     
 Err:
@@ -888,7 +888,7 @@ If newname = "" Then Exit Sub
 If newname = filMain.FileName Then Exit Sub
 SaveCode
 For E = 0 To filMain.ListCount
-    If LCase$(filMain.List(E)) = LCase$(newname) And LCase(filMain.FileName) <> LCase(newname) Then
+    If LCase$(filMain.List(E)) = LCase$(newname) And LCase$(filMain.FileName) <> LCase$(newname) Then
         Msg = MsgBox("Replace Note " + filMain.List(E) + "?", vbExclamation + vbYesNo + vbApplicationModal, "Rename A Note")
         If Msg = vbNo Then
             Exit Sub

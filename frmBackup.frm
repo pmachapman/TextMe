@@ -87,93 +87,94 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+Option Explicit
 
 Private Sub cmdCancel_Click()
-Unload Me
+    Unload Me
 End Sub
 
 Private Sub cmdCopy_Click()
-Dim sFiles() As String
-Dim lCtr As Long
-On Error GoTo CopyErr
-If frmBackup.Caption = "Restore TextMe Database" Then
-    If Right$(txtPath.Text, 1) = "/" Then txtPath.Text = Left$(txtPath.Text, Len(txtPath.Text) - 1) + "\"
-    If Right$(txtPath.Text, 1) <> "\" Then txtPath.Text = txtPath.Text + "\"
-    sFiles = AllFiles(txtPath.Text)
-    If sFiles(0) = "" Then
-    MsgBox "Restore Directory Empty Or Does Not Exist, Please Select Another Folder To Restore From.", vbApplicationModal + vbExclamation + vbOKOnly, "TextMe Notes Database Restore"
-    Exit Sub
-    End If
-    If chkDelete.Value = 1 Then
-        sFiles = AllFiles(App.Path + "\TextFiles\")
-        If sFiles(0) <> "" Then Kill App.Path + "\TextFiles\" & "*.*"
-    End If
-    sFiles = AllFiles(txtPath.Text)
-    
-    For lCtr = 0 To UBound(sFiles)
-        FileCopy txtPath.Text & sFiles(lCtr), App.Path + "\textfiles\" & sFiles(lCtr)
-    Next
-    frmMain.filMain.Refresh
-    frmMain.filRefresh.Refresh
-    frmMain.filMain.Selected(0) = True
-Else
-    If Right$(txtPath.Text, 1) = "/" Then txtPath.Text = Left$(txtPath.Text, Len(txtPath.Text) - 1) + "\"
-    If Right$(txtPath.Text, 1) <> "\" Then txtPath.Text = txtPath.Text + "\"
-    If chkDelete.Value = 1 Then
+    Dim sFiles() As String
+    Dim lCtr As Long
+    On Error GoTo CopyErr
+    If frmBackup.Caption = "Restore TextMe Database" Then
+        If Right$(txtPath.Text, 1) = "/" Then txtPath.Text = Left$(txtPath.Text, Len(txtPath.Text) - 1) + "\"
+        If Right$(txtPath.Text, 1) <> "\" Then txtPath.Text = txtPath.Text + "\"
         sFiles = AllFiles(txtPath.Text)
-        If sFiles(0) <> "" Then Kill txtPath.Text & "*.*"
+        If sFiles(0) = "" Then
+        MsgBox "Restore Directory Empty Or Does Not Exist, Please Select Another Folder To Restore From.", vbApplicationModal + vbExclamation + vbOKOnly, "TextMe Notes Database Restore"
+        Exit Sub
+        End If
+        If chkDelete.Value = 1 Then
+            sFiles = AllFiles(App.Path + "\TextFiles\")
+            If sFiles(0) <> "" Then Kill App.Path + "\TextFiles\" & "*.*"
+        End If
+        sFiles = AllFiles(txtPath.Text)
+        
+        For lCtr = 0 To UBound(sFiles)
+            FileCopy txtPath.Text & sFiles(lCtr), App.Path + "\textfiles\" & sFiles(lCtr)
+        Next
+        frmMain.filMain.Refresh
+        frmMain.filRefresh.Refresh
+        frmMain.filMain.Selected(0) = True
+    Else
+        If Right$(txtPath.Text, 1) = "/" Then txtPath.Text = Left$(txtPath.Text, Len(txtPath.Text) - 1) + "\"
+        If Right$(txtPath.Text, 1) <> "\" Then txtPath.Text = txtPath.Text + "\"
+        If chkDelete.Value = 1 Then
+            sFiles = AllFiles(txtPath.Text)
+            If sFiles(0) <> "" Then Kill txtPath.Text & "*.*"
+        End If
+        sFiles = AllFiles(App.Path + "\textfiles\")
+        For lCtr = 0 To UBound(sFiles)
+            FileCopy App.Path + "\textfiles\" & sFiles(lCtr), txtPath.Text & sFiles(lCtr)
+        Next
     End If
-    sFiles = AllFiles(App.Path + "\textfiles\")
-    For lCtr = 0 To UBound(sFiles)
-        FileCopy App.Path + "\textfiles\" & sFiles(lCtr), txtPath.Text & sFiles(lCtr)
-    Next
-End If
-Unload Me
-Exit Sub
+    Unload Me
+    Exit Sub
 CopyErr:
-If Me.Caption = "Restore TextMe Database" Then
-    MsgBox "The TextMe Database Could Not Be Restored. Please Check The Restore Folder Exists And Contains Valid Notes.", vbApplicationModal + vbExclamation + vbOKOnly, "TextMe Notes Database Restore"
-    If SalamanderExists = True Then Salamander.ReportError "TextMe", "frmBackup.cmdCopy_Click", Err.Number, Err.Description + " while restoring"
-Else
-    MsgBox "The TextMe Database Could Not Be Backed Up. Please Check The Backup Folder Exists And Is Empty.", vbApplicationModal + vbExclamation + vbOKOnly, "TextMe Notes Database Backup"
-    If SalamanderExists = True Then Salamander.ReportError "TextMe", "frmBackup.cmdCopy_Click", Err.Number, Err.Description + " while backing up"
-End If
-End Sub
-
-Private Sub drvPath_Change()
-On Error GoTo NoDrive
-ChDrive drvPath.Drive
-folPath.Path = CurDir
-drvPath.Refresh
-folPath.Refresh
-Exit Sub
+    If Me.Caption = "Restore TextMe Database" Then
+        MsgBox "The TextMe Database Could Not Be Restored. Please Check The Restore Folder Exists And Contains Valid Notes.", vbApplicationModal + vbExclamation + vbOKOnly, "TextMe Notes Database Restore"
+        If SalamanderExists = True Then Salamander.ReportError "TextMe", "frmBackup.cmdCopy_Click", Err.Number, Err.Description + " while restoring"
+    Else
+        MsgBox "The TextMe Database Could Not Be Backed Up. Please Check The Backup Folder Exists And Is Empty.", vbApplicationModal + vbExclamation + vbOKOnly, "TextMe Notes Database Backup"
+        If SalamanderExists = True Then Salamander.ReportError "TextMe", "frmBackup.cmdCopy_Click", Err.Number, Err.Description + " while backing up"
+    End If
+    End Sub
+    
+    Private Sub drvPath_Change()
+    On Error GoTo NoDrive
+    ChDrive drvPath.Drive
+    folPath.Path = CurDir$
+    drvPath.Refresh
+    folPath.Refresh
+    Exit Sub
 NoDrive:
-MsgBox "Drive Inaccessible, Please Select Another", vbApplicationModal + vbExclamation + vbOKOnly, "Cannot Select Drive"
-drvPath.SetFocus
+    MsgBox "Drive Inaccessible, Please Select Another", vbApplicationModal + vbExclamation + vbOKOnly, "Cannot Select Drive"
+    drvPath.SetFocus
 End Sub
 
 Private Sub folPath_Change()
-drvPath.Drive = folPath.Path
-If Right$(folPath.Path, 1) = "\" Then txtPath.Text = folPath.Path Else txtPath.Text = folPath.Path + "\"
-txtPath.SelStart = Len(txtPath.Text)
+    drvPath.Drive = folPath.Path
+    If Right$(folPath.Path, 1) = "\" Then txtPath.Text = folPath.Path Else txtPath.Text = folPath.Path + "\"
+    txtPath.SelStart = Len(txtPath.Text)
 End Sub
 
 Private Sub Form_Activate()
-frmMain.timMain.Interval = 0
-If frmMain.recBorder(6).FillStyle = 1 Then
-    Me.Caption = "Restore TextMe Database"
-    lblDescription.Caption = "Restore From"
-    lblWarning.Caption = "WARNING: Notes In The TextMe Database Will Be Replaced"
-    cmdCopy.ToolTipText = "Restore Note Database"
-    cmdCancel.ToolTipText = "Cancel Restoration of Note Database"
-    chkDelete.ToolTipText = "Clear Database Before Restoration"
-End If
-drvPath.Drive = App.Path
-folPath.Path = App.Path
-txtPath.Text = folPath.Path + "\"
-txtPath.SelStart = Len(txtPath.Text)
+    frmMain.timMain.Enabled = False
+    If frmMain.recBorder(6).FillStyle = 1 Then
+        Me.Caption = "Restore TextMe Database"
+        lblDescription.Caption = "Restore From"
+        lblWarning.Caption = "WARNING: Notes In The TextMe Database Will Be Replaced"
+        cmdCopy.ToolTipText = "Restore Note Database"
+        cmdCancel.ToolTipText = "Cancel Restoration of Note Database"
+        chkDelete.ToolTipText = "Clear Database Before Restoration"
+    End If
+    drvPath.Drive = App.Path
+    folPath.Path = App.Path
+    txtPath.Text = folPath.Path + "\"
+    txtPath.SelStart = Len(txtPath.Text)
 End Sub
 
 Private Sub Form_Unload(Cancel As Integer)
-frmMain.timMain.Interval = 5000
+    frmMain.timMain.Enabled = True
 End Sub

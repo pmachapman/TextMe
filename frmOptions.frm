@@ -250,7 +250,7 @@ retval = ChooseFont(cf)  ' open the dialog box
 If retval <> 0 Then  ' success
   CopyMemory lfont, ByVal pMem, Len(lfont)  ' copy memory back
   ' Now make the fixed-length string holding the font name into a "normal" string.
-  fontname = Left(lfont.lfFaceName, InStr(lfont.lfFaceName, vbNullChar) - 1)
+  fontname = Left$(lfont.lfFaceName, InStr(lfont.lfFaceName, vbNullChar) - 1)
   ' Display font name and a few attributes.
   FontSettings(0) = fontname
   FontSettings(1) = cf.iPointSize / 10   ' in units of 1/10 point!
