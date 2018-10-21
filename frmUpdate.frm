@@ -36,7 +36,7 @@ Begin VB.Form frmUpdate
       NoFolders       =   0   'False
       Transparent     =   0   'False
       ViewID          =   "{0057D0E0-3573-11CF-AE69-08002B2E1262}"
-      Location        =   "http:///"
+      Location        =   ""
    End
 End
 Attribute VB_Name = "frmUpdate"
@@ -47,7 +47,13 @@ Attribute VB_Exposed = False
 Option Explicit
 
 Private Sub Form_Load()
-    wbUpdate.Navigate2 "https://textme.conglomo.co.nz/update.php?v=" + CStr(App.Major) + "." + CStr(App.Minor) + "." + CStr(App.Revision)
+    Dim Url As String
+    If GetWindowsVersion < 6 Then
+        Url = "http://textme.conglomo.co.nz/update.php?v="
+    Else
+        Url = "https://textme.conglomo.co.nz/update.php?v="
+    End If
+    wbUpdate.Navigate2 Url + CStr(App.Major) + "." + CStr(App.Minor) + "." + CStr(App.Revision)
     Form_Resize
     Dim Msg As Long
     Msg = MsgBox("Please Connect To The Internet Before Continuing." + vbCrLf + vbCrLf + "NOTE: No Personal Information Is Sent, Only The Version Number.", vbInformation + vbApplicationModal + vbOKCancel, "TextMe Web Update")
@@ -55,7 +61,7 @@ Private Sub Form_Load()
         Unload Me
         Exit Sub
     End If
-    wbUpdate.Navigate2 "https://textme.conglomo.co.nz/update.php?v=" + CStr(App.Major) + "." + CStr(App.Minor) + "." + CStr(App.Revision)
+    wbUpdate.Navigate2 Url + CStr(App.Major) + "." + CStr(App.Minor) + "." + CStr(App.Revision)
 End Sub
 
 Private Sub Form_Resize()
